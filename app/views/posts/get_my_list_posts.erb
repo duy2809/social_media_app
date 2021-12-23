@@ -1,0 +1,38 @@
+<h1>Posts 📖</h1><br/>
+<%= link_to 'New Post', new_post_path, class: 'btn btn-success' %><br/><br/>
+
+<div class="d-flex" style="width: 100%">
+  <div class="" style="width: 60%">
+    <% @posts.each do |post| %>
+        <div class="card me-3 mb-3">
+          <div class="card-header d-flex align-items-center justify-content-between">
+            <div class="d-flex align-items-center">
+              <% if post.user.avatar.attached? %>
+                <%= image_tag post.user.avatar, class: "rounded-circle me-2", style: "height: 50px; width: 50px; object-fit: cover;" %>
+              <% else %>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg" class="rounded-circle me-2" style="height: 50px; width: 50px; object-fit: cover;"/>
+              <% end %>
+              <div>
+                <h5 class="mb-1"><%= post.user.name %></h5>
+                <h6><%= time_ago_in_words(post.created_at) %><h6>
+              </div>
+            </div>
+            <div class="">
+              <%= link_to 'Edit', edit_post_path(post), class: 'btn btn-secondary' %>
+              <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+            </div>
+          </div>
+          <div class="card-body">
+            <h2 class="card-title"><%= link_to "#{post.title}", post, class:"text-decoration-none", style:"color: black" %></h2>
+          </div>
+          <div class="card-footer bg-white">
+            0 Like・0 Dislike・0 Comment
+          </div>
+        </div>
+    <% end %>
+  <div>
+
+  <div class="bg-dark" style="">
+    
+  <div>
+</div>
