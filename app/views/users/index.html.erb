@@ -1,0 +1,17 @@
+<h1>List member 🙌</h1><br/>
+
+<div class="d-flex flex-wrap">
+  <% @users.each do |user| %>
+    <div class="d-flex align-items-center me-5 mb-5" style="width: 27%">
+        <% if user.avatar.attached? %>
+            <%= image_tag user.avatar, class: "rounded-circle me-3", style: "height: 100px; width: 100px; object-fit: cover;" %>
+        <% end %>
+        <div class="" style="">
+            <h2 class="">
+                <%= user.name %>
+            </h2>
+            <%= link_to 'See detail', "/users/#{user.id}", class:"btn btn-primary" %>
+        </div>
+    </div>
+  <% end %>
+<div>

@@ -1,0 +1,33 @@
+<div class="d-flex">
+  <% if @user.avatar.attached? %>
+    <%= image_tag @user.avatar, class: "rounded-circle me-5", style: "height: 300px; width: 300px; object-fit: cover;" %>
+  <% end %>
+  <div class="" style="width: 30%">
+    <h2 class="">
+      <%= @user.name %>
+      <% if user_signed_in? %>
+        <% if @user.id == current_user.id %>
+          <%= link_to 'Edit profile', edit_user_registration_path, class:"btn btn-primary ms-3" %>
+        <% end %>
+      <% end %>
+    </h2>
+    <h5 class="">
+      <%= @user.gender == 0 ? 'Male' : 'Female' %>, <%= @user.age %>
+    </h5>
+    <h6 class="">
+      Email: <%= @user.email %>
+    </h6>
+    <div class="mt-3 d-flex justify-content-between">
+      <h6 class="">
+        <span class="fw-bold">67</span> posts
+      </h6>
+      <h6 class="">
+        <span class="fw-bold">0</span> followers
+      </h6>
+      <h6 class="">
+        <span class="fw-bold">0</span> following 
+      </h6>
+    </div>
+  </div>
+</div>
+
