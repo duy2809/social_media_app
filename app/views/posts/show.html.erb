@@ -1,0 +1,28 @@
+<%= link_to 'Back', posts_path, class:"btn btn-success mb-3" %>
+
+<div class="d-flex align-items-center">
+  <% if @post.user.avatar.attached? %>
+    <%= image_tag @post.user.avatar, class: "rounded-circle me-2", style: "height: 50px; width: 50px; object-fit: cover;" %>
+  <% else %>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg" class="rounded-circle me-2" style="height: 50px; width: 50px; object-fit: cover;"/>
+  <% end %>
+  <div>
+    <h5 class="mb-1"><%= @post.user.name %></h5>
+    <h6 class="mb-0"><%= time_ago_in_words(@post.created_at) %><h6>
+  </div>
+</div>
+
+<h1 class="mb-3 mt-3"><%= @post.title %></h1>
+<dl>
+  <dd class=""><%= @post.content %></dd>
+</dl>
+
+<h5>0 Like・0 Dislike・0 Comment</h5>
+
+<% if user_signed_in? %>
+    <div class="d-flex mb-3 mt-3">
+    <a class="btn btn-light me-2">👍</a>
+    <a class="btn btn-light ">👎 </a>
+  </div>
+  <h2>Leave a comment</h2>
+<% end %>

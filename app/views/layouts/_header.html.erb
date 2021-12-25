@@ -7,20 +7,20 @@
     </button>
     <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
       <ul class="navbar-nav">
-          <li class="nav-item">
-            <%= link_to 'Newsfeed', new_user_session_path, class:"nav-link #{'active' if current_page?(new_user_session_path)}"%>
-          </li>
-          <% if user_signed_in? %>
-          <li class="nav-item">
-            <%= link_to 'My post', new_user_session_path, class:"nav-link #{'active' if current_page?(new_user_session_path)}"%>
-          </li>
-          <% end %>
+        <li class="nav-item">
+          <%= link_to 'Newsfeed', posts_path, class:"nav-link #{'active' if current_page?(posts_path)}"%>
+        </li>
+        <% if user_signed_in? %>
+        <li class="nav-item">
+          <%= link_to 'My post', '/my-post', class:"nav-link #{'active' if current_page?('/my-post')}"%>
+        </li>
+        <% end %>
       </ul>
-      
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search post ..." aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+
+      <%= form_with url: posts_path, class:"d-flex", method: :get do |form| %>
+        <%= form.text_field :query, class:"form-control me-2", placeholder:"Search post ..." %>
+        <%= form.submit "Search", class:"btn btn-outline-success" %>
+      <% end %>
 
       <ul class="navbar-nav me-3">
         <li class="nav-item"><%= link_to 'List member', "/users", class:"nav-link #{'active' if current_page?('/users')}"%></li>
